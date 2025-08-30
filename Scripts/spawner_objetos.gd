@@ -1,3 +1,4 @@
+##Spawnea todos los objetos en la escena
 extends Node2D
 @export var obstacle_scenes: Array[PackedScene]
 @export var spawn_interval: float = 0.7
