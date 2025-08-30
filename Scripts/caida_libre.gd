@@ -24,4 +24,4 @@ func _on_daño_recibido():
 ##Función que muestra lo que pasa cuando el player muere
 func _on_muerte_detectada():
 	print("Muerto")
-	#Añadir escena de GameOver
+	get_tree().change_scene_to_file("res://Escenas/game_over.tscn")
