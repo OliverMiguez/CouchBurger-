@@ -1,0 +1,3 @@
+# Juego en proceso...
+## Es una tontería no te emociones xd
+Próximamente gratuito en itchio -> XogosAquí
