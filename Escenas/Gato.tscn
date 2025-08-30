@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnvv404wru5gk"]
+
+[ext_resource type="Script" uid="uid://ba613tmfcfqba" path="res://Scripts/objeto_prueba.gd" id="1_33h2q"]
+[ext_resource type="Texture2D" uid="uid://bjeleem4sv5ls" path="res://Arte/gatiño.png" id="2_qgs3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lp1j6"]
+size = Vector2(18, 23.1667)
+
+[sub_resource type="Animation" id="Animation_qgs3c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_33h2q"]
+resource_name = "girar"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.59349, -3.1381, -4.73159, -6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0ejc"]
+_data = {
+&"RESET": SubResource("Animation_qgs3c"),
+&"girar": SubResource("Animation_33h2q")
+}
+
+[node name="Gato" type="Node2D"]
+script = ExtResource("1_33h2q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_qgs3c")
+
+[node name="Detección" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detección"]
+position = Vector2(1, 13.75)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_lp1j6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i0ejc")
+}
+
+[connection signal="body_entered" from="Detección" to="." method="_on_detección_body_entered"]

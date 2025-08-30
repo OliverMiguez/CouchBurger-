@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba7mg3g10y8ux"]
+
+[ext_resource type="Script" uid="uid://cr0e13qft6u2d" path="res://Scripts/sofá_personaje.gd" id="1_jqagc"]
+[ext_resource type="Texture2D" uid="uid://7l35ofcwkgn" path="res://icon.svg" id="2_eqnu0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkdv7"]
+size = Vector2(121, 121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iecpi"]
+size = Vector2(124, 123)
+
+[node name="SofáPersonaje" type="CharacterBody2D"]
+script = ExtResource("1_jqagc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_eqnu0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -2.5)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_xkdv7")
+debug_color = Color(0.449482, 0.450465, 1, 0.42)
+
+[node name="ÁreaColision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ÁreaColision"]
+position = Vector2(1, -2.5)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_iecpi")
+debug_color = Color(0.459939, 0.0573281, 0, 0.42)
+
+[connection signal="body_entered" from="ÁreaColision" to="." method="_on_área_colision_body_entered"]
