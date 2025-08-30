@@ -4,7 +4,6 @@ extends Node
 # señales que otros pueden emitir o escuchar
 signal daño_recibido  
 signal detectar_muerte
-
 #Vidas totales del jugador
 var vida := 3
 
