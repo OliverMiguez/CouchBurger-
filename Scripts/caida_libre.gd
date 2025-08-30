@@ -16,8 +16,12 @@ func _on_daño_recibido():
 	print("recibimos daño")
 	hamburguesa.frame += 1
 	contador_hamburguesa += 1
-	if hamburguesa.frame == 2 and contador_hamburguesa == 3:
+	if hamburguesa.frame == 1 and contador_hamburguesa == 3:
 		hamburguesa.queue_free()
+		#Activar escena de muerte
+		_on_muerte_detectada()
+
 ##Función que muestra lo que pasa cuando el player muere
 func _on_muerte_detectada():
 	print("Muerto")
+	#Añadir escena de GameOver
