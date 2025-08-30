@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://c1nkb02rugemc"]
+[gd_scene load_steps=11 format=4 uid="uid://c1nkb02rugemc"]
 
 [ext_resource type="Script" uid="uid://c388x32bvjkky" path="res://Scripts/caida_libre.gd" id="1_mgvkw"]
 [ext_resource type="Texture2D" uid="uid://cul4v2gvofbnj" path="res://Arte/cielo.png" id="1_wt25n"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bdjbxvitp118x" path="res://Escenas/spawner_objetos.tscn" id="4_bnhwy"]
 [ext_resource type="PackedScene" uid="uid://je2tho8by6e" path="res://Escenas/platano.tscn" id="5_cyro4"]
 [ext_resource type="Texture2D" uid="uid://cvv2u32aks7ap" path="res://Arte/burger.png" id="6_id832"]
+[ext_resource type="FontFile" uid="uid://qwtrcwthfawf" path="res://Fuentes/I-pixel-u.ttf" id="8_oxy3m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bnhwy"]
 texture = ExtResource("1_wt25n")
@@ -50,3 +51,19 @@ position = Vector2(1012, 13)
 scale = Vector2(5, 5)
 texture = ExtResource("6_id832")
 hframes = 3
+
+[node name="Contador" type="Label" parent="."]
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 205.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("8_oxy3m")
+theme_override_font_sizes/font_size = 120
+text = "23"
+
+[node name="TimerContador" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="TimerContador" to="." method="_on_timer_contador_timeout"]

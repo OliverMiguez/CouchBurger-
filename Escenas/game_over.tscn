@@ -9,7 +9,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Estructura_del_GameOver/ColorRect/GameOver:position")
+tracks/0/path = NodePath("EstructuraDelGameOver/ColorRect/GameOver:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Estructura_del_GameOver/ColorRect/GameOver:position")
+tracks/0/path = NodePath("EstructuraDelGameOver/ColorRect/GameOver:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,9 +43,9 @@ _data = {
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_37yi2")
 
-[node name="Estructura_del_GameOver" type="CanvasLayer" parent="."]
+[node name="EstructuraDelGameOver" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Estructura_del_GameOver"]
+[node name="ColorRect" type="ColorRect" parent="EstructuraDelGameOver"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -53,7 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="GameOver" type="Label" parent="Estructura_del_GameOver/ColorRect"]
+[node name="GameOver" type="Label" parent="EstructuraDelGameOver/ColorRect"]
 layout_mode = 2
 offset_left = 223.0
 offset_top = 71.0
@@ -63,7 +63,7 @@ theme_override_fonts/font = ExtResource("1_mkivq")
 theme_override_font_sizes/font_size = 128
 text = "Game Over"
 
-[node name="Button" type="Button" parent="Estructura_del_GameOver/ColorRect"]
+[node name="Button" type="Button" parent="EstructuraDelGameOver/ColorRect"]
 layout_mode = 2
 offset_left = 221.0
 offset_top = 327.0
@@ -80,4 +80,4 @@ libraries = {
 }
 autoplay = "Letras"
 
-[connection signal="pressed" from="Estructura_del_GameOver/ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="EstructuraDelGameOver/ColorRect/Button" to="." method="_on_button_pressed"]
