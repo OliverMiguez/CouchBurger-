@@ -36,4 +36,5 @@ func _on_muerte_detectada():
 ##Tiempo total de juego
 func _on_timer_contador_timeout():
 	print("Victoria")
+	#Cambiar a la escena de Victoria
 	
