@@ -1,9 +1,12 @@
 ##Spawnea todos los objetos en la escena
 extends Node2D
-@export var obstacle_scenes: Array[PackedScene]
-@export var spawn_interval: float = 0.7
+@export var obstacle_scenes: Array[PackedScene] #recoge todos los objetos a spawnear
+@export var spawn_interval: float = 0.7 #Tiempo que tarda en spawnear al siguiente obstaculo
 var timer := 0.0
 var dificil_round := 0.0
+var dificil_dificil := 0.0
+
+
 
 func _process(delta):
 	timer += delta
@@ -12,9 +15,16 @@ func _process(delta):
 		spawn_obstacle()
 		
 	dificil_round += delta
-	if dificil_round >= 5:
+	if dificil_round >= 10:
 		spawn_interval = 0.2
+		dificil_round = 0.0
+	
+	dificil_dificil += delta
+	if dificil_dificil >= 20:
+		spawn_interval = 0.09
+		
 
+		
 	
 func spawn_obstacle():
 	if obstacle_scenes.size() == 0:
