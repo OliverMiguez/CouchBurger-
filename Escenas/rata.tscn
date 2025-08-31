@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bsg8irrnrjnkj"]
+[gd_scene load_steps=16 format=3 uid="uid://bsg8irrnrjnkj"]
 
+[ext_resource type="Script" uid="uid://db06b607rwfsu" path="res://Scripts/rata.gd" id="1_07ebw"]
 [ext_resource type="Texture2D" uid="uid://ggbdmruog5vh" path="res://Arte/Rat-arriba.png" id="1_xpx1h"]
 [ext_resource type="Texture2D" uid="uid://doww05kb76sah" path="res://Arte/Rata de lado.png" id="2_ldhm8"]
+[ext_resource type="Texture2D" uid="uid://itcug46t11wj" path="res://Arte/Rata de frente.png" id="4_736re"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07ebw"]
 atlas = ExtResource("1_xpx1h")
@@ -34,6 +36,10 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_aou43"]
 atlas = ExtResource("2_ldhm8")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46i70"]
+atlas = ExtResource("4_736re")
+region = Rect2(0, 0, 200, 200)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_46i70"]
 animations = [{
@@ -70,17 +76,29 @@ animations = [{
 "loop": true,
 "name": &"Lado",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46i70")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wjvj7"]
 radius = 5.0
 
 [node name="Rata" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_07ebw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_46i70")
 animation = &"Arriba"
-frame_progress = 0.797858
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_wjvj7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
