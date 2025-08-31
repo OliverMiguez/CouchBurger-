@@ -1,5 +1,5 @@
 ##Clase del jugador que manejamos
-
+#Debug ? 
 extends CharacterBody2D
 class_name Personaje
 
