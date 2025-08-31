@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=9 format=3 uid="uid://cxp8m1ipx6qg2"]
+
+[ext_resource type="PackedScene" uid="uid://syki6k0e6aac" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_TextBubble/text_bubble_base.tscn" id="1_3rgtj"]
+[ext_resource type="Script" uid="uid://bwg6yncmh2cml" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_ywx5s"]
+[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="3_2w8xq"]
+[ext_resource type="PackedScene" uid="uid://d2it0xiap3gnt" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Textbubble/text_bubble_layer.tscn" id="4_reu2j"]
+[ext_resource type="Script" uid="uid://dv08k6ljua6fm" path="res://addons/dialogic/Resources/dialogic_style.gd" id="5_kbsxx"]
+
+[sub_resource type="Resource" id="Resource_xblk3"]
+script = ExtResource("2_ywx5s")
+scene = ExtResource("1_3rgtj")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_2h8ip"]
+script = ExtResource("2_ywx5s")
+scene = ExtResource("3_2w8xq")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_ycs0c"]
+script = ExtResource("2_ywx5s")
+scene = ExtResource("4_reu2j")
+overrides = {
+"bold_font": "\"res://Fuentes/I-pixel-u.ttf\"",
+"bold_italic_font": "\"res://Fuentes/I-pixel-u.ttf\"",
+"italic_font": "\"res://Fuentes/I-pixel-u.ttf\"",
+"name_label_enabled": "false",
+"normal_font": "\"res://Fuentes/I-pixel-u.ttf\""
+}
+
+[resource]
+script = ExtResource("5_kbsxx")
+name = "Estilo de Dialogo Caida Libre"
+layer_list = Array[String](["10", "11"])
+layer_info = {
+"": SubResource("Resource_xblk3"),
+"10": SubResource("Resource_2h8ip"),
+"11": SubResource("Resource_ycs0c")
+}
+base_overrides = {}
+layers = Array[ExtResource("2_ywx5s")]([])
+metadata/_latest_layer = "11"

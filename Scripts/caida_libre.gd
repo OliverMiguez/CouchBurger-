@@ -15,6 +15,17 @@ func _ready():
 	General.daño_recibido.connect(_on_daño_recibido)
 	General.detectar_muerte.connect(_on_muerte_detectada)
 	
+	###Dialogic
+	##Registramos al persnaje y iniciamos el dialogo, ***Solo para este caso debido a que es con globos el dialogo***
+	#var timeline_path = "res://Dialogic Plugin Extras/TimeLines/CaidaLibre.dtl"
+	#var layout = Dialogic.start(timeline_path)
+	#add_child(layout)
+	#
+	#layout.register_character(
+		#load("res://Dialogic Plugin Extras/Characters/You.dch"),
+		#$"SofáPersonaje/BubbleMarker"
+	#)
+	
 func _process(delta):
 	contador.text = str(round(timer_contador.time_left))
 	

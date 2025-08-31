@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://je2tho8by6e"]
 
-[ext_resource type="Texture2D" uid="uid://cpfjonvpmx50e" path="res://Arte/banana.png" id="1_euye2"]
+[ext_resource type="Texture2D" uid="uid://b2ijc7gpap0cp" path="res://Arte/banana.png" id="1_euye2"]
 [ext_resource type="Script" uid="uid://d3whfi1i3n6ns" path="res://Scripts/platano.gd" id="1_ieph5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieph5"]

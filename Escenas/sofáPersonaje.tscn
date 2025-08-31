@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ba7mg3g10y8ux"]
 
 [ext_resource type="Script" uid="uid://cr0e13qft6u2d" path="res://Scripts/sofá_personaje.gd" id="1_jqagc"]
-[ext_resource type="Texture2D" uid="uid://7l35ofcwkgn" path="res://icon.svg" id="2_eqnu0"]
+[ext_resource type="Texture2D" uid="uid://dlk2nfmlmqmef" path="res://icon.svg" id="2_eqnu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xkdv7"]
 size = Vector2(121, 121)
@@ -29,5 +29,8 @@ position = Vector2(1, -2.5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_iecpi")
 debug_color = Color(0.459939, 0.0573281, 0, 0.42)
+
+[node name="BubbleMarker" type="Node2D" parent="."]
+position = Vector2(0, -33)
 
 [connection signal="body_entered" from="ÁreaColision" to="." method="_on_área_colision_body_entered"]
