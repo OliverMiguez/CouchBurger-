@@ -14,7 +14,7 @@ func _ready():
 	
 func _on_nivel_enviado(nivel_enviado:int):
 	nivel_actual = nivel_enviado
-	print(nivel_actual)
+	print("Nivel actual",nivel_actual)
 
 
 ##Funcionamiento del spawneo de objetos
