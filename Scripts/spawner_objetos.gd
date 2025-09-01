@@ -11,6 +11,11 @@ var nivel_actual = 0
 
 func _ready():
 	SelecciónDeNiveles.nivel_enviado.connect(_on_nivel_enviado)
+	
+func _on_nivel_enviado(nivel_enviado:int):
+	nivel_actual = nivel_enviado
+	print(nivel_actual)
+
 
 ##Funcionamiento del spawneo de objetos
 func _process(delta):
@@ -46,6 +51,3 @@ func spawn_obstacle():
 	add_child(obs)
 	obs.position = Vector2(randi_range(0, 1152), 700)
 	
-func _on_nivel_enviado(nivel_enviado:int):
-	nivel_actual = nivel_enviado
-	print(nivel_actual)
