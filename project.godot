@@ -27,6 +27,7 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "CaidaLibre": "res://Dialogic Plugin Extras/TimeLines/CaidaLibre.dtl",
+"No_te_pasaste_el_anterior": "res://Dialogic Plugin Extras/TimeLines/No_te_pasaste_el_anterior.dtl",
 "Tutorial": "res://Dialogic Plugin Extras/TimeLines/Tutorial.dtl"
 }
 layout/style_directory={

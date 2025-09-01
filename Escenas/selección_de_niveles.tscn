@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://rnp37achdunp"]
+[gd_scene load_steps=3 format=3 uid="uid://rnp37achdunp"]
 
 [ext_resource type="FontFile" uid="uid://qwtrcwthfawf" path="res://Fuentes/I-pixel-u.ttf" id="1_dkrj8"]
+[ext_resource type="Script" uid="uid://cn3u2ot504arv" path="res://Scripts/selección_de_niveles.gd" id="1_ucs7e"]
 
 [node name="Selección de Niveles" type="Node2D"]
+script = ExtResource("1_ucs7e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -50,3 +52,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_dkrj8")
 theme_override_font_sizes/font_size = 60
 text = "Nivel 4"
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Nivel1" to="." method="_on_nivel_1_pressed"]
