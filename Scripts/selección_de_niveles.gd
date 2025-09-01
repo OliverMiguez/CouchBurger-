@@ -3,6 +3,7 @@ extends Node2D
 #Verifica que el tutorial se completara correctamente, para desbloquear el siguiente nivel
 var verificación_tutorial = 0
 
+
 ##Botón que ejecuta el tutorial
 func _on_tutorial_pressed():
 	verificación_tutorial = 1
@@ -14,5 +15,5 @@ func _on_nivel_1_pressed():
 		get_tree().change_scene_to_file("res://Escenas/caida_libre.tscn")
 	else:
 		Dialogic.start("res://Dialogic Plugin Extras/TimeLines/No_te_pasaste_el_anterior.dtl")
-		
-		
+
+##Verificar si el nivel 1 se ha superado para desbloquear nivel 2
