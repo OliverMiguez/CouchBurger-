@@ -6,6 +6,9 @@ var timer := 0.0 #Timer que verifica el spawneo inicial
 var dificil_round := 0.0 #Aumenta el indice del spawneo
 var dificil_dificil := 0.0#Igual que dificil_round
 
+func _ready():
+	#señal recibida del selector de niveles con el dato del nivel seleccionado 
+	SelecciónDeNiveles.nivel_seleccionado.connect(_on_nivel_seleccionado)
 
 ##Funcionamiento del spawneo de objetos
 func _process(delta):
@@ -36,4 +39,7 @@ func spawn_obstacle():
 	var obs = scene.instantiate()
 	add_child(obs)
 	obs.position = Vector2(randi_range(0, 1152), 700)
+
+func _on_nivel_seleccionado(nivel:int) -> void:
+	print(nivel)
 	

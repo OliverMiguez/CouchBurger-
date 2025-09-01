@@ -1,6 +1,6 @@
 extends Node2D
 
-
+var nivel_seleccionado
 
 
 func _on_play_pressed():
