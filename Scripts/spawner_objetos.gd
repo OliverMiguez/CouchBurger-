@@ -6,28 +6,34 @@ var timer := 0.0 #Timer que verifica el spawneo inicial
 var dificil_round := 0.0 #Aumenta el indice del spawneo
 var dificil_dificil := 0.0#Igual que dificil_round
 
+#almacena el valor del nivel en el que nos encontramos ahora mismo
+var nivel_actual = 0
+
 func _ready():
-	#señal recibida del selector de niveles con el dato del nivel seleccionado 
-	SelecciónDeNiveles.nivel_seleccionado.connect(_on_nivel_seleccionado)
+	SelecciónDeNiveles.nivel_enviado.connect(_on_nivel_enviado)
 
 ##Funcionamiento del spawneo de objetos
 func _process(delta):
-	#Primera ronda (creo que no deberia cambiarse)
-	timer += delta #acumula el valor del tiempo que ocurre en cada frame(para saber cuando spawnear un nuevo objeto)
-	#si el valor del timer supera al del spawneo automaticamente spawnea el objeto y se reinicia
-	if timer >= spawn_interval:
-		timer = 0
-		spawn_obstacle()
+	if nivel_actual == 0:
+		print(nivel_actual)#porque recibe valor 0 y no el valor recibido ?
+		pass
+	elif nivel_actual == 1:
+		#Primera ronda (creo que no deberia cambiarse)
+		timer += delta #acumula el valor del tiempo que ocurre en cada frame(para saber cuando spawnear un nuevo objeto)
+		#si el valor del timer supera al del spawneo automaticamente spawnea el objeto y se reinicia
+		if timer >= spawn_interval:
+			timer = 0
+			spawn_obstacle()
+			
+		#A lo largo del juego, su progresión de spawneo
+		dificil_round += delta
+		if dificil_round >= 10:
+			spawn_interval = 0.2
+			dificil_round = 0.0
 		
-	#A lo largo del juego, su progresión de spawneo
-	dificil_round += delta
-	if dificil_round >= 10:
-		spawn_interval = 0.2
-		dificil_round = 0.0
-	
-	dificil_dificil += delta
-	if dificil_dificil >= 20:
-		spawn_interval = 0.09
+		dificil_dificil += delta
+		if dificil_dificil >= 20:
+			spawn_interval = 0.09
 
 func spawn_obstacle():
 	if obstacle_scenes.size() == 0:
@@ -39,7 +45,7 @@ func spawn_obstacle():
 	var obs = scene.instantiate()
 	add_child(obs)
 	obs.position = Vector2(randi_range(0, 1152), 700)
-
-func _on_nivel_seleccionado(nivel:int) -> void:
-	print(nivel)
 	
+func _on_nivel_enviado(nivel_enviado:int):
+	nivel_actual = nivel_enviado
+	print(nivel_actual)
