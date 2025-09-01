@@ -49,7 +49,7 @@ Próximamente vendrán:
 ## 🤝 Contribuye  
 ¿Ideas de obstáculos absurdos? ¿Power-ups que molen? Abre un issue o mándame un pull request.  
 Esto es un proyecto random, pero con mucho amor y hambre.  
-Uso Godot 4.4 por si te cheta o Cheddar
+Uso Godot 4.4 por si te Cheddar
 
 ---
 
