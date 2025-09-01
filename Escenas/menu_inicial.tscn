@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt75u6mllpi3"]
+
+[ext_resource type="Script" uid="uid://cd8fvcb37bvmg" path="res://Scripts/menu_inicial.gd" id="1_bn526"]
+[ext_resource type="FontFile" uid="uid://qwtrcwthfawf" path="res://Fuentes/I-pixel-u.ttf" id="2_drock"]
+
+[node name="MenuInicial" type="Node2D"]
+script = ExtResource("1_bn526")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorFondo" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.372549, 1, 1)
+
+[node name="CouchBurguer" type="Label" parent="CanvasLayer"]
+offset_left = 198.0
+offset_top = 83.0
+offset_right = 1008.0
+offset_bottom = 233.0
+theme_override_fonts/font = ExtResource("2_drock")
+theme_override_font_sizes/font_size = 120
+text = "Couch Burguer"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 545.0
+offset_top = 334.0
+offset_right = 585.0
+offset_bottom = 374.0
+
+[node name="Play" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_drock")
+theme_override_font_sizes/font_size = 60
+text = "Play"
+
+[node name="Exit" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_drock")
+theme_override_font_sizes/font_size = 60
+text = "Exit"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

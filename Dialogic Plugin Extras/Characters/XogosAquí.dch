@@ -1,0 +1,31 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 1, 1, 1),
+&"custom_info": {
+"prefix": "",
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "Historia Grafica estilo",
+"suffix": ""
+},
+&"default_portrait": "XogosAquí",
+&"description": "xdxdxd",
+&"display_name": "XogosAquí",
+&"mirror": false,
+&"nicknames": ["Its me xd"],
+&"offset": Vector2(0, 0),
+&"portraits": {
+"XogosAquí": {
+"export_overrides": {
+"image": "\"res://icon.svg\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+&"scale": 1.0
+}

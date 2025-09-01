@@ -22,17 +22,20 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"XogosAquí": "res://Dialogic Plugin Extras/Characters/XogosAquí.dch",
 "You": "res://Dialogic Plugin Extras/Characters/You.dch"
 }
 directories/dtl_directory={
-"CaidaLibre": "res://Dialogic Plugin Extras/TimeLines/CaidaLibre.dtl"
+"CaidaLibre": "res://Dialogic Plugin Extras/TimeLines/CaidaLibre.dtl",
+"Tutorial": "res://Dialogic Plugin Extras/TimeLines/Tutorial.dtl"
 }
 layout/style_directory={
 "": "res://Dialogic Plugin Extras/Estilo de Dialogo Caida Libre.tres",
-"Estilo de Dialogo Caida Libre": "res://Dialogic Plugin Extras/Estilo de Dialogo Caida Libre.tres"
+"Estilo de Dialogo Caida Libre": "res://Dialogic Plugin Extras/Estilo de Dialogo Caida Libre.tres",
+"Historia Grafica estilo": "res://Dialogic Plugin Extras/Historia Grafica estilo.tres"
 }
 extensions_folder="res://addons/dialogic_additions"
-layout/style_list=["res://Dialogic Plugin Extras/Estilo de Dialogo Caida Libre.tres"]
+layout/style_list=["res://Dialogic Plugin Extras/Estilo de Dialogo Caida Libre.tres", "res://Dialogic Plugin Extras/Historia Grafica estilo.tres"]
 layout/default_style="res://Dialogic Plugin Extras/Estilo de Dialogo Caida Libre.tres"
 glossary/default_case_sensitive=true
 glossary/glossary_files=[]
