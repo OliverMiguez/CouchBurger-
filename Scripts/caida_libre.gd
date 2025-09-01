@@ -26,6 +26,7 @@ func _ready():
 		#$"SofáPersonaje/BubbleMarker"
 	#)
 	
+##Muestra en cada momento el tiempo de la partida
 func _process(delta):
 	contador.text = str(round(timer_contador.time_left))
 	
