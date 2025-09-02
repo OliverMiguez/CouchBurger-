@@ -1,10 +1,10 @@
 extends Node2D
+class_name MenuInicial
 
-var nivel_seleccionado
-
-
+## Función que ejecuta el botón "Play" del Menu
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://Escenas/selección_de_niveles.tscn")#Va al menu de selección de niveles
+	get_tree().change_scene_to_file("res://Escenas/selección_de_niveles.tscn")
 
+## Función que cierra el juego
 func _on_exit_pressed():
 	get_tree().quit() #cierra el juego

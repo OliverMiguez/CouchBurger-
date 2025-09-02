@@ -1,18 +1,17 @@
-##ESTE SCRIPT ES AUTOLOAD
 extends Node2D
 class_name SeleccionNiveles
-#Verifica que el tutorial se completara correctamente, para desbloquear el siguiente nivel
-var verificación_tutorial = 0
-#Verificar en que nivel nos encontramos
-var nivel_seleccionado :int = 0 
 
-##TUTORIAL
+
+var verificación_tutorial = 0 # Verifica que el tutorial se completara correctamente, para desbloquear el siguiente nivel
+var nivel_seleccionado :int = 0 # Verificar en que nivel nos encontramos
+
+## TUTORIAL
 func _on_tutorial_pressed():
 	SelecciónDeNiveles.verificación_tutorial = 1 # se utiliza de esta manera para guardarlo en el autoload
 	Dialogic.start("res://Dialogic Plugin Extras/TimeLines/Tutorial.dtl")
 	print("Tutorial Superado")
 
-##NIVEL 1
+## NIVEL 1
 func _on_nivel_1_pressed():
 	if SelecciónDeNiveles.verificación_tutorial == 1:
 		SelecciónDeNiveles.nivel_seleccionado = 1# se utiliza de esta manera para guardarlo en el autoload y poder enviarlo a otros scripts
@@ -24,7 +23,7 @@ func _on_nivel_1_pressed():
 ##Verificar si el nivel 1 se ha superado para desbloquear nivel 2
 #################################
 
-##NIVEL 2
+## NIVEL 2
 func _on_nivel_2_pressed():
 	if SelecciónDeNiveles.verificación_tutorial == 1:
 		SelecciónDeNiveles.nivel_seleccionado = 2

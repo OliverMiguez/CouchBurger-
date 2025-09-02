@@ -5,19 +5,20 @@ extends Node
 signal daño_recibido  
 signal detectar_muerte
 
-#Vidas totales del jugador
+# Vidas totales del jugador
 var vida := 3
 
-##Quita una vida al jugador cuando recibe daño
+## Función que permite quitar vida al Player cuando recibe daño
 func recibir_daño():
 	vida -= 1
-	emit_signal("daño_recibido") #Envia los nuevos datos de vida a la señal daño_recibido
+	emit_signal("daño_recibido") # Envia los nuevos datos de vida a la señal daño_recibido
 	if vida <= 0 :
 		muerte()
-##Cuando el jugador no tiene vidas
+
+## Función que se ejecuta cuando el Player no tiene vida
 func muerte():
-		emit_signal("detectar_muerte") #Cuando el jugador no tiene vidas emite la señal de muerte
-##Restablece la vida del jugador cada vez que se pierda y se pulse reiniciar
+	emit_signal("detectar_muerte") # Cuando el jugador no tiene vidas emite la señal de muerte
+	
+## Función que reinicia la vida del player tras reiniciar ronda
 func reiniciar_vida():
 	vida = 3
-	
