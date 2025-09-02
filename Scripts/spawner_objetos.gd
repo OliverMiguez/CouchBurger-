@@ -1,22 +1,18 @@
 ##Spawnea todos los objetos en la escena
 extends Node2D
+class_name SpawnerObjetos
 @export var obstacle_scenes: Array[PackedScene] #recoge todos los objetos a spawnear
 @export var spawn_interval: float = 0.7 #Tiempo que tarda en spawnear al siguiente obstaculo
 var timer := 0.0 #Timer que verifica el spawneo inicial
 var dificil_round := 0.0 #Aumenta el indice del spawneo
 var dificil_dificil := 0.0#Igual que dificil_round
 
-#almacena el valor del nivel en el que nos encontramos ahora mismo
-var nivel_actual = 0
 
 ##Funcionamiento del spawneo de objetos
 func _process(delta):
-	SelecciónDeNiveles.nivel_enviado.connect(_on_nivel_enviado)
-
-	if nivel_actual == 0:
-		print(nivel_actual)#porque recibe valor 0 y no el valor recibido ?
-		pass
-	elif nivel_actual == 1:
+	if SelecciónDeNiveles.nivel_seleccionado == 0 or SelecciónDeNiveles.nivel_seleccionado == null:
+		print(SelecciónDeNiveles.nivel_seleccionado)#porque recibe valor 0 y no el valor recibido ?
+	elif SelecciónDeNiveles.nivel_seleccionado == 1:
 		#Primera ronda (creo que no deberia cambiarse)
 		timer += delta #acumula el valor del tiempo que ocurre en cada frame(para saber cuando spawnear un nuevo objeto)
 		#si el valor del timer supera al del spawneo automaticamente spawnea el objeto y se reinicia
@@ -44,8 +40,4 @@ func spawn_obstacle():
 	var obs = scene.instantiate()
 	add_child(obs)
 	obs.position = Vector2(randi_range(0, 1152), 700)
-	
-	
-func _on_nivel_enviado(nivel_obtenido:int):
-	nivel_actual = nivel_obtenido
 	

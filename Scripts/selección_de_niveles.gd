@@ -1,25 +1,20 @@
 ##ESTE SCRIPT ES AUTOLOAD
 extends Node2D
-
+class_name SeleccionNiveles
 #Verifica que el tutorial se completara correctamente, para desbloquear el siguiente nivel
 var verificación_tutorial = 0
-
-#Para que el spawner verifique en que nivel estamos y spawnee objetos de manera personalizada
-signal nivel_enviado(nivel_a_enviar:int)
-
-
+var nivel_seleccionado :int = 0 #<---- El Código del spawner recibe este valor en vez del nuevo
 ##Botón que ejecuta el tutorial
 func _on_tutorial_pressed():
-	verificación_tutorial = 1
+	SelecciónDeNiveles.verificación_tutorial = 1
 	Dialogic.start("res://Dialogic Plugin Extras/TimeLines/Tutorial.dtl")
+	print("Tutorial Superado")
 
 ##Script para activar el primer nivel
 func _on_nivel_1_pressed():
-	#si se supero el nivel tutorial
-	if verificación_tutorial == 1:
-		#se modifica el valor que se enviará
-		#se envia el dato
-		nivel_enviado.emit(1)
+	if SelecciónDeNiveles.verificación_tutorial == 1:
+		SelecciónDeNiveles.nivel_seleccionado = 1
+		print("Nivel seleccionado en el selector de niveles:",nivel_seleccionado)
 		get_tree().change_scene_to_file("res://Escenas/caida_libre.tscn")
 	else:
 		Dialogic.start("res://Dialogic Plugin Extras/TimeLines/No_te_pasaste_el_anterior.dtl")
