@@ -10,9 +10,12 @@ var dificil_dificil := 0.0#Igual que dificil_round
 
 ##Funcionamiento del spawneo de objetos
 func _process(delta):
+	
 	if SelecciónDeNiveles.nivel_seleccionado == 0 or SelecciónDeNiveles.nivel_seleccionado == null:
-		print(SelecciónDeNiveles.nivel_seleccionado)#porque recibe valor 0 y no el valor recibido ?
+		print(SelecciónDeNiveles.nivel_seleccionado)
+		
 	elif SelecciónDeNiveles.nivel_seleccionado == 1:
+		print("Nivel Seleccionado",SelecciónDeNiveles.nivel_seleccionado)
 		#Primera ronda (creo que no deberia cambiarse)
 		timer += delta #acumula el valor del tiempo que ocurre en cada frame(para saber cuando spawnear un nuevo objeto)
 		#si el valor del timer supera al del spawneo automaticamente spawnea el objeto y se reinicia
