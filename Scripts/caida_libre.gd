@@ -1,51 +1,36 @@
-##Escena de caida libre
 extends Node2D
 class_name caida_libre
-@onready var hamburguesa = $UI/Hamburguesa
-#Administra el tiempo de juego 1 min por ejemplo
-@onready var contador = $Contador
-@onready var timer_contador = $TimerContador
 
+@onready var hamburguesa = $UI/Hamburguesa # Sprite Hamburguesa
+@onready var contador = $Contador # Label que muestra el tiempo de ronda
+@onready var timer_contador = $TimerContador # Contador que administra el tiempo total de ronda
 
-#Cuando el frame de la hamburguesa sea mayor a 2 la elimina
-var contador_hamburguesa = 0
+var contador_hamburguesa = 0 # Administra los frames del sprite de la hamburguesa
 
 func _ready():
-	#LLama a las señales del script general para que cuando sean emitadas puedan ejecutarse
+	# LLama a las señales del script general para que cuando sean emitadas puedan ejecutarse
 	General.daño_recibido.connect(_on_daño_recibido)
 	General.detectar_muerte.connect(_on_muerte_detectada)
-	
-	###Dialogic
-	##Registramos al persnaje y iniciamos el dialogo, ***Solo para este caso debido a que es con globos el dialogo***
-	#var timeline_path = "res://Dialogic Plugin Extras/TimeLines/CaidaLibre.dtl"
-	#var layout = Dialogic.start(timeline_path)
-	#add_child(layout)
-	#
-	#layout.register_character(
-		#load("res://Dialogic Plugin Extras/Characters/You.dch"),
-		#$"SofáPersonaje/BubbleMarker"
-	#)
-	
-##Muestra en cada momento el tiempo de la partida
+
 func _process(delta):
-	contador.text = str(round(timer_contador.time_left))
-	
-##Función que muestra lo que pasa cuando el player recibe daño
+	contador.text = str(round(timer_contador.time_left)) # Muestra en cada momento el tiempo de la partida##Muestra en cada momento el tiempo de la partida
+
+## Función que maneja el daño recibido por el jugador
 func _on_daño_recibido():
 	print("recibimos daño")
-	hamburguesa.frame += 1
-	contador_hamburguesa += 1
-	if hamburguesa.frame == 1 and contador_hamburguesa == 3:
+	hamburguesa.frame += 1 # Son 3 frames 0,1,2
+	contador_hamburguesa += 1 
+	if hamburguesa.frame == 1 and contador_hamburguesa == 3: # Elimina la hamburguesa cuando ya no tenga mas frames de la animación
 		hamburguesa.queue_free()
-		#Activar escena de muerte
+		# Activar escena de muerte
 		_on_muerte_detectada()
 
-##Función que muestra lo que pasa cuando el player muere
+## Función que se ejecuta cuando el player muere
 func _on_muerte_detectada():
 	print("Muerto")
 	get_tree().change_scene_to_file("res://Escenas/game_over.tscn")
 
-##Tiempo total de juego
+## Cuando el tiempo de la ronda finaliza
 func _on_timer_contador_timeout():
 	print("Victoria")
 	#Cambiar a la escena de Victoria

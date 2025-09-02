@@ -2,7 +2,7 @@ extends Node2D
 class_name SpawnerObjetos
 
 @export var obstacle_scenes: Array[PackedScene] # Escenas a spawnear
-@export var spawn_interval: float = 0.7           # Intervalo inicial de spawn
+@export var spawn_interval: float = 0.7 # Intervalo inicial de spawn
 
 # Timers internos
 var timer := 0.0
