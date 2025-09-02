@@ -63,8 +63,9 @@ Solo recuerda: **nunca comas hamburguesas en un sueño, que te caes del cielo.**
 Te molaría jugar algun juego ramdon mío?
 Pues toma mi itchio y dale duro xD -> https://xogosaqui.itch.io/
 
---
+---
 
 ![Made with Love](https://img.shields.io/badge/made%20with-%F0%9F%92%96-pink)  
 ![Status](https://img.shields.io/badge/status-en%20desarrollo-yellow)  
 ![Burger](https://img.shields.io/badge/%F0%9F%8D%94-hamburguesa-red)
+
