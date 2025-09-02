@@ -55,3 +55,4 @@ text = "Nivel 4"
 
 [connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Nivel1" to="." method="_on_nivel_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Nivel2" to="." method="_on_nivel_2_pressed"]

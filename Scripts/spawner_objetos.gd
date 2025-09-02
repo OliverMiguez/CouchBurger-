@@ -1,46 +1,75 @@
-##Spawnea todos los objetos en la escena
 extends Node2D
 class_name SpawnerObjetos
-@export var obstacle_scenes: Array[PackedScene] #recoge todos los objetos a spawnear
-@export var spawn_interval: float = 0.7 #Tiempo que tarda en spawnear al siguiente obstaculo
-var timer := 0.0 #Timer que verifica el spawneo inicial
-var dificil_round := 0.0 #Aumenta el indice del spawneo
-var dificil_dificil := 0.0#Igual que dificil_round
 
+@export var obstacle_scenes: Array[PackedScene] # Escenas a spawnear
+@export var spawn_interval: float = 0.7           # Intervalo inicial de spawn
 
-##Funcionamiento del spawneo de objetos
+# Timers internos
+var timer := 0.0
+var dificil_round := 0.0
+var dificil_dificil := 0.0
+
+func _ready():
+	# Reiniciar timers cada vez que se carga la escena
+	timer = 0.0
+	dificil_round = 0.0
+	dificil_dificil = 0.0
+
 func _process(delta):
-	
-	if SelecciónDeNiveles.nivel_seleccionado == 0 or SelecciónDeNiveles.nivel_seleccionado == null:
-		print(SelecciónDeNiveles.nivel_seleccionado)
-		
-	elif SelecciónDeNiveles.nivel_seleccionado == 1:
-		print("Nivel Seleccionado",SelecciónDeNiveles.nivel_seleccionado)
-		#Primera ronda (creo que no deberia cambiarse)
-		timer += delta #acumula el valor del tiempo que ocurre en cada frame(para saber cuando spawnear un nuevo objeto)
-		#si el valor del timer supera al del spawneo automaticamente spawnea el objeto y se reinicia
-		if timer >= spawn_interval:
-			timer = 0
-			spawn_obstacle()
-			
-		#A lo largo del juego, su progresión de spawneo
-		dificil_round += delta
-		if dificil_round >= 10:
-			spawn_interval = 0.2
-			dificil_round = 0.0
-		
-		dificil_dificil += delta
-		if dificil_dificil >= 20:
-			spawn_interval = 0.09
+	var nivel = SelecciónDeNiveles.nivel_seleccionado  # Leer siempre el Autoload/Global de selección de niveles
 
+	if nivel == 0 or nivel == null:
+		# Nivel no seleccionado
+		print("Nivel actual:", nivel)
+		return
+
+	match nivel:
+		1:
+			spawn_level_1(delta)
+		2:
+			spawn_level_2(delta)
+		_:
+			# Otros niveles futuros
+			pass
+
+# ------------------ NIVEL 1 ------------------
+func spawn_level_1(delta):
+	timer += delta
+	if timer >= spawn_interval:
+		timer = 0
+		spawn_obstacle()
+
+	dificil_round += delta
+	if dificil_round >= 10:
+		spawn_interval = 0.2
+		dificil_round = 0.0
+
+	dificil_dificil += delta
+	if dificil_dificil >= 20:
+		spawn_interval = 0.09
+
+# ------------------ NIVEL 2 ------------------
+func spawn_level_2(delta):
+	timer += delta
+	if timer >= spawn_interval:
+		timer = 0
+		spawn_obstacle()
+
+	dificil_round += delta
+	if dificil_round >= 10:
+		spawn_interval = 0.02
+		dificil_round = 0.0
+
+	dificil_dificil += delta
+	if dificil_dificil >= 20:
+		spawn_interval = 0.01
+
+# ------------------ SPAWNEO DE OBJETOS ------------------
 func spawn_obstacle():
 	if obstacle_scenes.size() == 0:
-		return  # por si no se asignaron escenas(en caso de estar vacío el array)
-		##La función que ejecuta el RETURN es la de parar la función en este punto en caso de que el array estea vacío
-		
-	#Selecciona un objeto ramdon del array y lo spawnea en una posición aleatoira entre las seleccionadas
+		return
+
 	var scene = obstacle_scenes[randi() % obstacle_scenes.size()]
 	var obs = scene.instantiate()
 	add_child(obs)
 	obs.position = Vector2(randi_range(0, 1152), 700)
-	
