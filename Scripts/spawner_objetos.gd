@@ -66,10 +66,11 @@ func spawn_level_2(delta):
 
 # ------------------ SPAWNEO DE OBJETOS ------------------
 func spawn_obstacle():
-	if obstacle_scenes.size() == 0:
+	# Verificar que existan obstáculos para instanciar
+	if obstacle_scenes.size() == 0: 
 		return
 
-	var scene = obstacle_scenes[randi() % obstacle_scenes.size()]
-	var obs = scene.instantiate()
-	add_child(obs)
-	obs.position = Vector2(randi_range(0, 1152), 700)
+	var scene = obstacle_scenes[randi() % obstacle_scenes.size()] # Selecciona un obstáculo aleatorio
+	var obs = scene.instantiate() # Lo instancia en la escena
+	add_child(obs) # Lo añade al árbol de nodos de la escena
+	obs.position = Vector2(randi_range(0, 1152), 700) # Lo genera en una posición aleatoria entre estos números

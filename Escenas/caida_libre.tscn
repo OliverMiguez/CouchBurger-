@@ -43,6 +43,7 @@ position = Vector2(562, 101)
 position = Vector2(569, 329)
 
 [node name="ObjetoPrueba(se puede eliminar)" parent="." instance=ExtResource("3_sp4ph")]
+visible = false
 position = Vector2(565, 585)
 
 [node name="SpawnerObjetos" parent="." instance=ExtResource("4_bnhwy")]
@@ -73,5 +74,22 @@ text = "23"
 wait_time = 15.0
 one_shot = true
 autostart = true
+
+[node name="Puntos de referencia" type="Node2D" parent="."]
+
+[node name="Centro" type="Marker2D" parent="Puntos de referencia"]
+position = Vector2(576, 600)
+
+[node name="Derecha" type="Marker2D" parent="Puntos de referencia"]
+position = Vector2(1000, 600)
+
+[node name="Izquierda" type="Marker2D" parent="Puntos de referencia"]
+position = Vector2(152, 600)
+
+[node name="Centro-Izquierda" type="Marker2D" parent="Puntos de referencia"]
+position = Vector2(364, 600)
+
+[node name="Centro-Derecha" type="Marker2D" parent="Puntos de referencia"]
+position = Vector2(788, 600)
 
 [connection signal="timeout" from="TimerContador" to="." method="_on_timer_contador_timeout"]
