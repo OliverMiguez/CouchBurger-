@@ -4,73 +4,91 @@ class_name SpawnerObjetos
 @export var obstacle_scenes: Array[PackedScene] # Escenas a spawnear
 @export var spawn_interval: float = 0.7 # Intervalo inicial de spawn
 
-# Timers internos
-var timer := 0.0
+@onready var tiempo_de_spawn: Timer = $Timer/TiempoDeSpawn
+
+# Timers internos (solo para controlar dificultad)
 var dificil_round := 0.0
 var dificil_dificil := 0.0
 
+# Posiciones de spawneo
+var centro_pantalla_x = 576
+var centro_pantalla_y = 600
+var izquierda = 152
+var derecha = 1000
+var entre_medias_izquierda = 364
+var entre_medias_derecha = 788
+
 func _ready():
-	# Reiniciar timers cada vez que se carga la escena
-	timer = 0.0
-	dificil_round = 0.0
-	dificil_dificil = 0.0
-
-func _process(delta):
-	var nivel = SelecciónDeNiveles.nivel_seleccionado  # Leer siempre el Autoload/Global de selección de niveles
-
-	if nivel == 0 or nivel == null:
-		# Nivel no seleccionado
-		print("Nivel actual:", nivel)
-		return
+	# Configuramos el timer inicial según el nivel
+	var nivel = SelecciónDeNiveles.nivel_seleccionado
 
 	match nivel:
 		1:
-			spawn_level_1(delta)
+			tiempo_de_spawn.wait_time = spawn_interval # empieza en 0.7
+			tiempo_de_spawn.start()
 		2:
-			spawn_level_2(delta)
+			tiempo_de_spawn.wait_time = spawn_interval # también 0.7, puedes ajustarlo distinto
+			tiempo_de_spawn.start()
 		_:
-			# Otros niveles futuros
-			pass
+			print("Nivel no válido:", nivel)
 
-# ------------------ NIVEL 1 ------------------
-func spawn_level_1(delta):
-	timer += delta
-	if timer >= spawn_interval:
-		timer = 0
-		spawn_obstacle()
+# ------------------ MANEJO DE DIFICULTAD ------------------
+func _process(delta):
+	var nivel = SelecciónDeNiveles.nivel_seleccionado
 
-	dificil_round += delta
-	if dificil_round >= 10:
-		spawn_interval = 0.2
-		dificil_round = 0.0
+	match nivel:
+		1:
+			dificil_round += delta
+			if dificil_round >= 10:
+				tiempo_de_spawn.wait_time = 0.2
+				dificil_round = 0.0
 
-	dificil_dificil += delta
-	if dificil_dificil >= 20:
-		spawn_interval = 0.09
+			dificil_dificil += delta
+			if dificil_dificil >= 20:
+				tiempo_de_spawn.wait_time = 0.09
 
-# ------------------ NIVEL 2 ------------------
-func spawn_level_2(delta):
-	timer += delta
-	if timer >= spawn_interval:
-		timer = 0
-		spawn_obstacle()
+		2:
+			dificil_round += delta
+			if dificil_round >= 10:
+				tiempo_de_spawn.wait_time = 0.02
+				dificil_round = 0.0
 
-	dificil_round += delta
-	if dificil_round >= 10:
-		spawn_interval = 0.02
-		dificil_round = 0.0
+			dificil_dificil += delta
+			if dificil_dificil >= 20:
+				tiempo_de_spawn.wait_time = 0.01
 
-	dificil_dificil += delta
-	if dificil_dificil >= 20:
-		spawn_interval = 0.01
+# ------------------ TIMEOUT DEL TIMER ------------------
+func _on_tiempo_de_spawn_timeout():
+	var nivel = SelecciónDeNiveles.nivel_seleccionado
+
+	match nivel:
+		1:
+			spawn_patron_1()
+		2:
+			spawn_obstacle()
 
 # ------------------ SPAWNEO DE OBJETOS ------------------
 func spawn_obstacle():
-	# Verificar que existan obstáculos para instanciar
 	if obstacle_scenes.size() == 0: 
 		return
 
-	var scene = obstacle_scenes[randi() % obstacle_scenes.size()] # Selecciona un obstáculo aleatorio
-	var obs = scene.instantiate() # Lo instancia en la escena
-	add_child(obs) # Lo añade al árbol de nodos de la escena
-	obs.position = Vector2(randi_range(0, 1152), 700) # Lo genera en una posición aleatoria entre estos números
+	var scene = obstacle_scenes[randi() % obstacle_scenes.size()]
+	var obs = scene.instantiate()
+	add_child(obs)
+	obs.position = Vector2(randi_range(0, 1152), 700)
+
+# ------------------ SPAWNEO DE OBJETOS NIVEL 1 ------------------
+func spawn_patron_1():
+	if obstacle_scenes.size() == 0:
+		return
+		
+	# Ejemplo: spawnea 1 objeto a la izquierda y 1 a la derecha
+	var objeto_izquierda_1 = obstacle_scenes[randi() % obstacle_scenes.size()]
+	var obs_izquierda_1 = objeto_izquierda_1.instantiate()
+	add_child(obs_izquierda_1)
+	obs_izquierda_1.position = Vector2(izquierda, 700)
+	
+	var objeto_derecha_1 = obstacle_scenes[randi() % obstacle_scenes.size()]
+	var obs_derecha_1 = objeto_derecha_1.instantiate()
+	add_child(obs_derecha_1)
+	obs_derecha_1.position = Vector2(derecha, 700)
