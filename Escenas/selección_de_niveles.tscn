@@ -53,6 +53,48 @@ theme_override_fonts/font = ExtResource("1_dkrj8")
 theme_override_font_sizes/font_size = 60
 text = "Nivel 4"
 
+[node name="LabelsNiveles" type="Node" parent="CanvasLayer"]
+
+[node name="Label" type="Label" parent="CanvasLayer/LabelsNiveles"]
+visible = false
+offset_left = 300.0
+offset_top = 19.0
+offset_right = 901.0
+offset_bottom = 94.0
+theme_override_fonts/font = ExtResource("1_dkrj8")
+theme_override_font_sizes/font_size = 60
+text = "Nivel 1 Desbloqueado"
+
+[node name="Label2" type="Label" parent="CanvasLayer/LabelsNiveles"]
+visible = false
+offset_left = 300.0
+offset_top = 19.0
+offset_right = 916.0
+offset_bottom = 94.0
+theme_override_fonts/font = ExtResource("1_dkrj8")
+theme_override_font_sizes/font_size = 60
+text = "Nivel 2 Desbloqueado"
+
+[node name="Label3" type="Label" parent="CanvasLayer/LabelsNiveles"]
+visible = false
+offset_left = 300.0
+offset_top = 19.0
+offset_right = 916.0
+offset_bottom = 94.0
+theme_override_fonts/font = ExtResource("1_dkrj8")
+theme_override_font_sizes/font_size = 60
+text = "Nivel 3 Desbloqueado"
+
+[node name="Label4" type="Label" parent="CanvasLayer/LabelsNiveles"]
+visible = false
+offset_left = 300.0
+offset_top = 19.0
+offset_right = 916.0
+offset_bottom = 94.0
+theme_override_fonts/font = ExtResource("1_dkrj8")
+theme_override_font_sizes/font_size = 60
+text = "Nivel 4 Desbloqueado"
+
 [connection signal="pressed" from="CanvasLayer/ColorFondo/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="CanvasLayer/ColorFondo/VBoxContainer/Nivel1" to="." method="_on_nivel_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/ColorFondo/VBoxContainer/Nivel2" to="." method="_on_nivel_2_pressed"]

@@ -33,4 +33,5 @@ func _on_muerte_detectada():
 ## Cuando el tiempo de la ronda finaliza
 func _on_timer_contador_timeout():
 	print("Victoria")
+	get_tree().change_scene_to_file("res://Escenas/victoria.tscn")
 	#Cambiar a la escena de Victoria

@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://l0n67w1smaj4"]
+
+[ext_resource type="Script" uid="uid://causnndq2o158" path="res://Scripts/victoria.gd" id="1_1ther"]
+[ext_resource type="FontFile" uid="uid://qwtrcwthfawf" path="res://Fuentes/I-pixel-u.ttf" id="1_1um40"]
+
+[node name="Victoria" type="Node2D"]
+script = ExtResource("1_1ther")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 233.0
+offset_right = 957.0
+offset_bottom = 393.0
+theme_override_fonts/font = ExtResource("1_1um40")
+theme_override_font_sizes/font_size = 128
+text = "VICTORIA"
+
+[node name="Niveles" type="Button" parent="CanvasLayer"]
+offset_left = 487.0
+offset_top = 470.0
+offset_right = 625.0
+offset_bottom = 528.0
+theme_override_fonts/font = ExtResource("1_1um40")
+theme_override_font_sizes/font_size = 40
+text = "Niveles"
+
+[connection signal="pressed" from="CanvasLayer/Niveles" to="." method="_on_niveles_pressed"]

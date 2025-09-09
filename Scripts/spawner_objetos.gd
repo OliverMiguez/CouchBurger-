@@ -75,8 +75,8 @@ func _on_tiempo_de_spawn_timeout():
 				11:spawn_patron_2()
 				12:spawn_patron_3()
 				13:spawn_patron_4()
-				14:spawn_patron_5()
-				15:spawn_patron_6()
+				#14:spawn_patron_5()
+				#15:spawn_patron_6()
 					
 			
 		2:
@@ -91,6 +91,7 @@ func spawn_obstacle():
 	var obs = scene.instantiate()
 	add_child(obs)
 	obs.position = Vector2(randi_range(0, 1152), 700)
+	
 # -------------------- SPAWNER DE OBJETOS -----------------
 func spawn_pattern(posicion: Array):
 	if obstacle_scenes == null: # Si no hay objetos en el array de obstáciulos
@@ -101,10 +102,8 @@ func spawn_pattern(posicion: Array):
 			var obs = scene.instantiate()
 			add_child(obs)
 			obs.position = Vector2(pos, 700)
-		
-	
 
-# ------------------ SPAWNEO DE OBJETOS NIVEL 1 ------------------
+# ------------------ PATRONES DE SPAWNEO ------------------
 
 func spawn_patron_1():
 	print("Patrón 1 lanzado")
@@ -143,4 +142,5 @@ func spawn_patron_8():
 func spawn_patron_9():
 	print("Patrón 9 lanzado")
 	spawn_pattern([izquierda, entre_medias_izquierda, entre_medias_derecha, derecha])
-# __________ PATRÓN SPAWNEO NIVEL 2 __________________________________
+
+# --------------------------------------------------------------------------------------------
