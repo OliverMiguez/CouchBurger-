@@ -16,11 +16,13 @@ func _on_tutorial_pressed():
 	SelecciónDeNiveles.verificación_tutorial = 1 # se utiliza de esta manera para guardarlo en el autoload
 	Dialogic.start("res://Dialogic Plugin Extras/TimeLines/Tutorial.dtl")
 	print("Tutorial Superado")
-	if SelecciónDeNiveles.verificación_tutorial == 1: # Muestra un texto de que el nivel 1 está desbloqueado
+	# Labels que indican el nivel desbloqueado
+	if SelecciónDeNiveles.verificación_tutorial == 1 and verificacion_nivel_1 == 0: # Muestra un texto de que el nivel 1 está desbloqueado
 		label.visible = true
 		label_2.visible = false
 		label_3.visible = false
 		label_4.visible = false
+ 
 		
 
 ## NIVEL 1
@@ -32,13 +34,9 @@ func _on_nivel_1_pressed():
 	else:
 		Dialogic.start("res://Dialogic Plugin Extras/TimeLines/No_te_pasaste_el_anterior.dtl")
 
-#################################
-##Verificar si el nivel 1 se ha superado para desbloquear nivel 2
-#################################
-
 ## NIVEL 2
 func _on_nivel_2_pressed():
-	if SelecciónDeNiveles.verificación_tutorial == 1 and verificacion_nivel_1 == 1:
+	if SelecciónDeNiveles.verificación_tutorial == 1 and verificacion_nivel_1 == 1: 
 		SelecciónDeNiveles.nivel_seleccionado = 2
 		get_tree().change_scene_to_file("res://Escenas/caida_libre.tscn")
 	else:

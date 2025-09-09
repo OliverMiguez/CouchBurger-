@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 General="*res://Scripts/General.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 "SelecciónDeNiveles"="*res://Scripts/selección_de_niveles.gd"
+victoria="res://Escenas/victoria.tscn"
 
 [dialogic]
 
